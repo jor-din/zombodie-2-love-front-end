@@ -1,5 +1,6 @@
 import "./DateCard.css";
 import ImgCard from "../../assets/Zombodie2Love-1 (1).png";
+import { Link } from "react-router-dom";
 
 const DateCard = ({ profile, handleLiked, handleDisliked, potentialMatch }) => {
   console.log(potentialMatch);
@@ -9,7 +10,11 @@ const DateCard = ({ profile, handleLiked, handleDisliked, potentialMatch }) => {
       <img src={ImgCard} alt="date-img" className="date-img" />
       <div className="date-card-body">
         <h2 className="date-name">
-          {potentialMatch.name}, {potentialMatch.age}
+        <Link state={potentialMatch}
+            to={`/profiles/${potentialMatch._id}`}
+          >
+            {potentialMatch.name}
+          </Link>, {potentialMatch.age}
         </h2>
         <h3>{potentialMatch.species}</h3>
         <p>{potentialMatch.bio}</p>
